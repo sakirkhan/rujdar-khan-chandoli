@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rujdar Khan: Gram Panchayat Chandoli</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configure Tailwind CSS and custom styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // NEW Palette: Deep Navy, Bright Saffron, Green Accent
+                        'primary': '#192841', // Deep Navy Blue (Authority, Trust)
+                        'secondary': '#FF8C00', // Bright Saffron/Dark Gold (Action, Visibility)
+                        'tertiary': '#4CAF50', // Bright Green (Growth, Vikas Accent)
+                        'background': '#F7F7F7', // Very light gray for optimal contrast
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #999; }
+        .hero-bg {
+            /* Updated Placeholder for a realistic village/development image */
+            background-image: linear-gradient(to right, rgba(25, 40, 65, 0.8), rgba(255, 140, 0, 0.7)), url('https://placehold.co/1200x600/FF8C00/192841?text=Chandoli+Vikas+Photo');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Style for the carousel slides */
+        .carousel-slide {
+            transition: transform 0.5s ease-in-out;
+            min-width: 100%;
+            height: 400px; /* Fixed height for consistency */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+        }
+        
+        /* Language Display Logic */
+        .lang-hi, .lang-en { display: none; }
+        body[data-lang="en"] .lang-en { display: initial; }
+        body[data-lang="hi"] .lang-hi { display: initial; }
+
+        /* Specific overrides for block elements */
+        body[data-lang="en"] .lang-en.block-display,
+        body[data-lang="hi"] .lang-hi.block-display {
+            display: block !important;
+        }
+
+        /* Forms status for non-live version */
+        .db-status-failed {
+            background-color: #fef2f2;
+            color: #b91c1c;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #fca5a5;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body class="bg-background font-sans text-gray-800" data-lang="en">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+                <div class="flex justify-start lg:w-0 lg:flex-1">
+                    <a href="#" class="text-2xl font-extrabold text-primary hover:text-secondary transition duration-300">
+                        <span class="lang-en">Rujdar Khan</span><span class="lang-hi">रुजदार खान</span>
+                        <span class="block text-xs font-medium text-gray-500">
+                            <span class="lang-en block-display">Bhavi Sarpanch | Gram Panchayat Chandoli</span>
+                            <span class="lang-hi block-display">भावी सरपंच | ग्राम पंचायत चांदोली</span>
+                        </span>
+                    </a>
+                </div>
+                <!-- Language Toggle Button -->
+                <button id="lang-toggle" class="text-xs font-bold text-primary border border-primary px-3 py-1 rounded-full hover:bg-primary hover:text-white transition duration-300">
+                    <span class="lang-en" data-lang="en">Switch to हिंदी</span>
+                    <span class="lang-hi" data-lang="hi">Switch to English</span>
+                </button>
+                <nav class="hidden md:flex space-x-10">
+                    <a href="#issues" class="text-base font-medium text-gray-500 hover:text-secondary transition duration-300">
+                        <span class="lang-en">Our Agenda</span><span class="lang-hi">हमारा एजेंडा</span>
+                    </a>
+                    <a href="#transparency" class="text-base font-medium text-gray-500 hover:text-secondary transition duration-300">
+                        <span class="lang-en">Accountability</span><span class="lang-hi">जवाबदेही</span>
+                    </a>
+                    <a href="#problems" class="text-base font-medium text-gray-500 hover:text-secondary transition duration-300">
+                        <span class="lang-en">Share Problem</span><span class="lang-hi">समस्या साझा करें</span>
+                    </a>
+                    <a href="#gallery" class="text-base font-medium text-gray-500 hover:text-secondary transition duration-300">
+                        <span class="lang-en">Gallery</span><span class="lang-hi">गैलरी</span>
+                    </a>
+                    <a href="#updates" class="text-base font-medium text-gray-500 hover:text-secondary transition duration-300">
+                        <span class="lang-en">Updates</span><span class="lang-hi">ताज़ा ख़बरें</span>
+                    </a>
+                    <a href="#volunteer" class="text-base font-medium text-white bg-secondary py-2 px-4 rounded-full shadow-lg hover:bg-primary transition duration-300">
+                        <span class="lang-en">Volunteer</span><span class="lang-hi">स्वयंसेवक बनें</span>
+                    </a>
+                </nav>
+                <div class="md:hidden">
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-button" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary">
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden absolute w-full bg-white shadow-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#issues" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+                    <span class="lang-en">Our Agenda</span><span class="lang-hi">हमारा एजेंडा</span>
+                </a>
+                <a href="#transparency" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+                    <span class="lang-en">Accountability</span><span class="lang-hi">जवाबदेही</span>
+                </a>
+                <a href="#problems" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+                    <span class="lang-en">Share Problem</span><span class="lang-hi">समस्या साझा करें</span>
+                </a>
+                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+                    <span class="lang-en">Gallery</span><span class="lang-hi">गैलरी</span>
+                </a>
+                <a href="#updates" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+                    <span class="lang-en">Updates</span><span class="lang-hi">ताज़ा ख़बरें</span>
+                </a>
+                <a href="#volunteer" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-primary hover:bg-secondary text-center mt-2">
+                    <span class="lang-en">Volunteer</span><span class="lang-hi">स्वयंसेवक बनें</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg py-24 sm:py-32 text-white text-center relative">
+            <div class="max-w-4xl mx-auto px-4">
+                <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                    <span class="block text-primary bg-white bg-opacity-90 rounded-xl p-2 mt-2 shadow-xl">
+                        <span class="lang-en">Rujdar Khan: Gram Panchayat Chandoli</span>
+                        <span class="lang-hi">रुजदार खान: ग्राम पंचायत चांदोली</span>
+                    </span>
+                </h1>
+                <p class="text-xl sm:text-2xl mt-4 font-light max-w-2xl mx-auto">
+                    <span class="lang-en">Fighting the election on **Ground Issues** (Safai, Pani, Sadak). Your voice, our priority across **Chandoli, Roja, and Baas.**</span>
+                    <span class="lang-hi">जमीनी **मुद्दों** (सफाई, पानी, सड़क) पर चुनाव लड़ रहे हैं। **चांदोली, रोजा और घाटी नीचे का बास** तीनों गांवों में आपकी आवाज़, हमारी प्राथमिकता।</span>
+                </p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <a href="#problems" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-xl text-white bg-secondary hover:bg-primary transition duration-300 transform hover:scale-105">
+                        <span class="lang-en">Tell Us Your Samasya (Problem)</span>
+                        <span class="lang-hi">अपनी समस्या (Samasya) बताएं</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Candidate Photo & Intro -->
+        <section class="bg-background py-12 -mt-16 md:-mt-20 relative z-10">
+            <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <img class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto shadow-xl ring-4 ring-secondary ring-offset-4 object-cover" 
+                     src="https://placehold.co/160x160/192841/FFFFFF?text=Rujdar+Khan" 
+                     alt="Rujdar Khan, Candidate for Sarpanch">
+                <h2 class="text-3xl font-extrabold text-primary mt-4">
+                    <span class="lang-en">Meet Rujdar Khan, Your Bhavi Sarpanch</span><span class="lang-hi">मिलिए रुजदार खान से, आपके भावी सरपंच</span>
+                </h2>
+                <p class="mt-3 text-lg text-gray-600">
+                    <span class="lang-en">"I am not here for a post, I am here to serve the community. Let's make Chandoli, Roja, and Baas the first **Truly Smart and Accountable Gram Panchayat** in the region."</span>
+                    <span class="lang-hi">"मैं पद के लिए नहीं, बल्कि ग्रामवासियो की सेवा के लिए यहां हूं। आइए, चांदोली, रोजा और घाटी नीचे का बास को क्षेत्र की पहली **वास्तव में स्मार्ट और जवाबदेह ग्राम पंचायत** बनाएं।"</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Message from Candidate -->
+        <section id="commitment" class="py-16 bg-background">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-extrabold text-primary mb-4">
+                    <span class="lang-en">My Commitment to Chandoli, Roja & Baas</span>
+                    <span class="lang-hi">चांदोली, रोजा और घाटी नीचे का बास के लिए मेरा संकल्प</span>
+                </h2>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    <span class="lang-en">
+                        Water and roads, proper health facilities for the poor, an open public library for our children, and skill-based livelihood options (rojgar) for the women of our villages so they can increase family income. We have already begun a free tanker water service even before holding any office. With a team of well-educated professionals, we pledge to resolve every problem of our villagers with honesty and dedication.
+                    </span>
+                    <span class="lang-hi">
+                        पानी और सड़कों की सुविधा, गरीब लोगों के लिए उचित स्वास्थ्य सेवाएँ, गाँव के बच्चों के लिए खुला सार्वजनिक पुस्तकालय, और महिलाओं के लिए कौशल-आधारित रोज़गार के नए विकल्प, जिससे वे परिवार की आय बढ़ा सकें। किसी पद पर आए बिना ही हमने मुफ्त टैंकर सेवा शुरू कर दी है। शिक्षित युवाओं की हमारी टीम आप सभी की प्रत्येक समस्या को हल करने के लिए पूरी ईमानदारी से काम करेगी।
+                    </span>
+                </p>
+            </div>
+        </section>
+
+        <!-- New Pillars of Support Section -->
+       <!--  <section id="support" class="py-16 bg-primary bg-opacity-5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-extrabold text-primary mb-12">
+                    <span class="lang-en">Pillars of Support: Family & Elder Blessings</span>
+                    <span class="lang-hi">समर्थन के स्तंभ: परिवार और बड़ों का आशीर्वाद</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Father: Noormal Khan -->
+                    <<!-- div class="bg-white p-6 rounded-xl shadow-2xl border-l-8 border-secondary text-left">
+                        <p class="text-xs font-bold text-gray-500 mb-2">
+                            <span class="lang-en">Noormal Khan, Father (पिता)</span>
+                            <span class="lang-hi">नूरमल खान, पिता</span>
+                        </p>
+                        <blockquote class="text-lg italic text-gray-700 border-l-4 border-tertiary pl-4">
+                            <span class="lang-en">"As his father, I have watched Rujdar grow into a committed leader with a clear vision for honesty and development (Vikas). Our family stands with him for the progress of Chandoli, Roja, and Baas."</span>
+                            <span class="lang-hi">"एक पिता के रूप में, मैंने रुजदार को ईमानदारी और विकास (Vikas) के स्पष्ट दृष्टिकोण वाले प्रतिबद्ध नेता के रूप में विकसित होते देखा है। हमारा परिवार चांदोली, रोजा और घाटी नीचे का बास की प्रगति के लिए उसके साथ खड़ा है।"</span>
+                        </blockquote>
+                    </div> -->
+
+                    <!-- Brother: Jaikam Khan -->
+                  <!--   <div class="bg-white p-6 rounded-xl shadow-2xl border-l-8 border-primary text-left">
+                        <p class="text-xs font-bold text-gray-500 mb-2">
+                            <span class="lang-en">Jaikam Khan, Brother (भाई)</span>
+                            <span class="lang-hi">जैकम खान, भाई</span>
+                        </p>
+                        <blockquote class="text-lg italic text-gray-700 border-l-4 border-tertiary pl-4">
+                            <span class="lang-en">"My brother Rujdar is fighting for real issues, not just politics. He grew up seeing the struggles of our people—the poor roads in Roja, the water issue in Baas. He is committed to full transparency."</span>
+                            <span class="lang-hi">"मेरा भाई रुजदार सिर्फ राजनीति के लिए नहीं, बल्कि वास्तविक मुद्दों के लिए लड़ रहा है। वह हमारे लोगों के संघर्षों को देखकर बड़ा हुआ है—रोजा में खराब सड़कें, घाटी नीचे का बास में पानी की समस्या। वह पूर्ण पारदर्शिता के लिए प्रतिबद्ध है।"
+                        </blockquote>
+                    </div>
+                </div> -->
+            </div>
+        </section> -->
+
+        <!-- Photo Gallery / Carousel Section -->
+        <section id="gallery" class="py-16 sm:py-24 bg-primary text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-10 text-secondary">
+                    <span class="lang-en">Campaign Moments & Village Vision Gallery</span>
+                    <span class="lang-hi">अभियान के क्षण और ग्राम संकल्प गैलरी</span>
+                </h2>
+                <div class="relative w-full max-w-4xl mx-auto">
+                    <div id="carousel-container" class="flex overflow-hidden rounded-xl shadow-2xl">
+                        <!-- Slides will be inserted here by JS -->
+                    </div>
+                    <!-- Navigation Buttons -->
+                    <button id="prev-btn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-secondary bg-opacity-70 text-white p-3 rounded-r-lg hover:bg-opacity-100 transition z-20 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="next-btn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-secondary bg-opacity-70 text-white p-3 rounded-l-lg hover:bg-opacity-100 transition z-20 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    <!-- Indicators -->
+                    <div id="carousel-indicators" class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                        <!-- Indicators will be generated here by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Issues Section (The Agenda) -->
+        <section id="issues" class="py-16 sm:py-24 bg-background">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-primary mb-12">
+                    <span class="lang-en">Our 6-Point Chandoli Agenda (For Roja, Baas & Chandoli)</span>
+                    <span class="lang-hi">हमारा 6-सूत्रीय चांदोली एजेंडा (रोजा, घाटी नीचे का बास और चांदोली के लिए)</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Issue 1: Safai (Cleanliness) -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-secondary">
+                        <svg class="h-10 w-10 text-secondary mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                        <h3 class="text-2xl font-bold text-primary mb-2">
+                            <span class="lang-en">1. Pura-Kachra Mukt (Cleanliness)</span>
+                            <span class="lang-hi">1. पूरा-कचरा मुक्त (सफाई)</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="lang-en">Implementing scheduled **door-to-door waste collection** in all three villages. Cleaning of public drains and ensuring hygiene in public spaces like the local market (*Bazaar*).</span>
+                            <span class="lang-hi">तीनों गांवों में निश्चित समय पर **घर-घर से कचरा संग्रहण** लागू करना। सार्वजनिक नालियों की सफाई और स्थानीय बाज़ार (*Bazaar*) जैसे सार्वजनिक स्थानों पर स्वच्छता सुनिश्चित करना।</span>
+                        </p>
+                    </div>
+
+                    <!-- Issue 2: Health Infrastructure -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-secondary">
+                        <svg class="h-10 w-10 text-secondary mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                        <h3 class="text-2xl font-bold text-primary mb-2">
+                            <span class="lang-en">2. Svasth Gram (Local Health)</span>
+                            <span class="lang-hi">2. स्वस्थ ग्राम (स्थानीय स्वास्थ्य)</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="lang-en">Ensuring the **availability of a doctor and basic medicines** at the Primary Health Center. Focusing on child and maternal health programs.</span>
+                            <span class="lang-hi">प्राथमिक स्वास्थ्य केंद्र पर **डॉक्टर और बुनियादी दवाओं की उपलब्धता** सुनिश्चित करना। बाल और मातृ स्वास्थ्य कार्यक्रमों पर ध्यान केंद्रित करना।</span>
+                        </p>
+                    </div>
+
+                    <!-- Issue 3: Water Supply -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-secondary">
+                        <svg class="h-10 w-10 text-secondary mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18m-6-6l6 6 6-6" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9l3 3 3-3M15 9l3 3 3-3" /></svg>
+                        <h3 class="text-2xl font-bold text-primary mb-2">
+                            <span class="lang-en">3. Pani Aur Bijli (Water & Power)</span>
+                            <span class="lang-hi">3. पानी और बिजली (जल एवं ऊर्जा)</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="lang-en">Guaranteed, **fixed-time drinking water supply** to every household. Repairing old pipes and ensuring functional streetlights on all main roads.</span>
+                            <span class="lang-hi">प्रत्येक घर में गारंटीशुदा, **निश्चित समय पर पीने के पानी की आपूर्ति**। पुरानी पाइपलाइनों की मरम्मत करना और सभी मुख्य सड़कों पर कार्यात्मक स्ट्रीटलाइटें सुनिश्चित करना।</span>
+                        </p>
+                    </div>
+
+                    <!-- Issue 4: Education -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-tertiary">
+                        <svg class="h-10 w-10 text-tertiary mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.417 9.53 5 8 5c-4 0-4 4-4 8s4 8 4 8c.703 0 1.388-.135 2-.4l.995 2.112c.706 1.493 2.66 1.493 3.366 0l.995-2.112c.612.265 1.297.4 2 .4 4 0 4-4 4-8s-4-8-4-8c-1.53 0-2.832.417-4 1.253z" /></svg>
+                        <h3 class="text-2xl font-bold text-primary mb-2">
+                            <span class="lang-en">4. Shiksa Sudhar (Education Reform)</span>
+                            <span class="lang-hi">4. शिक्षा सुधार (शैक्षणिक सुधार)</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="lang-en">Infrastructure upgrade for the *Panchayat School*, including **digital classrooms** and better access to government scheme benefits for students.</span>
+                            <span class="lang-hi">**डिजिटल कक्षाओं** सहित *पंचायत स्कूल* के बुनियादी ढांचे का उन्नयन और छात्रों के लिए सरकारी योजनाओं के लाभों तक बेहतर पहुंच सुनिश्चित करना।</span>
+                        </p>
+                    </div>
+
+                    <!-- Issue 5: Roads -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-tertiary">
+                        <svg class="h-10 w-10 text-tertiary mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5-5m0 0l5-5m-5 5h12M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" /></svg>
+                        <h3 class="text-2xl font-bold text-primary mb-2">
+                            <span class="lang-en">5. Pakki Sadak (Roads & Connectivity)</span>
+                            <span class="lang-hi">5. पक्की सड़क (सड़कें और कनेक्टिविटी)</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="lang-en">Prioritizing **pucca roads** (concrete roads) connecting major areas within Chandoli, Roja, and Baas, and ensuring proper maintenance under the Sarpanch budget.</span>
+                            <span class="lang-hi">चांदोली, रोजा और घाटी नीचे का बास के भीतर प्रमुख क्षेत्रों को जोड़ने वाली **पक्की सड़कों** (कंक्रीट सड़कें) को प्राथमिकता देना और सरपंच बजट के तहत उचित रखरखाव सुनिश्चित करना।</span>
+                        </p>
+                    </div>
+                    
+                    <!-- Issue 6: Smart Village & Digital Transparency -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 border-t-4 border-tertiary">
+                        <svg class="h-10 w-10 text-tertiary mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        <h3 class="text-2xl font-bold text-primary mb-2">
+                            <span class="lang-en">6. Smart Village & Digital Transparency</span>
+                            <span class="lang-hi">6. स्मार्ट गांव और डिजिटल पारदर्शिता</span>
+                        </h3>
+                        <p class="text-gray-600">
+                            <span class="lang-en">Using technology for **real-time information** about development projects and **online complaint resolution**—turning Gram Panchayat Chandoli into a truly Smart Village.</span>
+                            <span class="lang-hi">विकास परियोजनाओं के बारे में **रीयल-टाइम जानकारी** और **ऑनलाइन शिकायत निवारण** के लिए तकनीक का उपयोग करना—ग्राम पंचायत चांदोली को एक वास्तव में स्मार्ट गांव बनाना।</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Budget Accountability Section -->
+        <section id="transparency" class="py-16 sm:py-24 bg-primary">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+                <h2 class="text-4xl font-extrabold text-center mb-12 text-secondary">
+                    <span class="lang-en">Budget Accountability & The Panchayat Pledge</span>
+                    <span class="lang-hi">बजट जवाबदेही और पंचायत प्रतिज्ञा</span>
+                </h2>
+                <div class="bg-white text-gray-800 p-8 rounded-xl shadow-2xl">
+                    <p class="text-lg mb-4">
+                        <span class="lang-en">We pledge full transparency in the use of every rupee from the **Gram Nidhi** (Village Fund). No file will be hidden.</span>
+                        <span class="lang-hi">हम **ग्राम निधि** (गाँव कोष) के हर रुपये के उपयोग में पूर्ण पारदर्शिता की प्रतिज्ञा करते हैं। कोई भी फ़ाइल छिपाई नहीं जाएगी।</span>
+                    </p>
+                    <ul class="space-y-3 list-disc list-inside">
+                        <li>
+                            <span class="lang-en font-bold text-primary">Online Access to Budget:</span><span class="lang-en"> Monthly reports on allocated funds, expenditure, and project status will be available on this portal for Chandoli, Roja, and Baas.</span>
+                            <span class="lang-hi font-bold text-primary">बजट तक ऑनलाइन पहुंच:</span><span class="lang-hi"> चांदोली, रोजा और घाटी नीचे का बास के लिए आवंटित धन, खर्च और परियोजना की स्थिति पर मासिक रिपोर्ट इस पोर्टल पर उपलब्ध होगी।</span>
+                        </li>
+                        <li>
+                            <span class="lang-en font-bold text-primary">Gram Sabha Audit:</span><span class="lang-en"> Every major project will be presented for audit and approval in the Gram Sabha meeting, with digital records maintained.</span>
+                            <span class="lang-hi font-bold text-primary">ग्राम सभा लेखापरीक्षा:</span><span class="lang-hi"> हर बड़ी परियोजना को ग्राम सभा की बैठक में लेखापरीक्षा और अनुमोदन के लिए प्रस्तुत किया जाएगा, जिसमें डिजिटल रिकॉर्ड रखा जाएगा।</span>
+                        </li>
+                        <li>
+                            <span class="lang-en font-bold text-primary">Zero Corruption Policy:</span><span class="lang-en"> Commitment to ensuring that government funds reach the beneficiaries without delay or deduction.</span>
+                            <span class="lang-hi font-bold text-primary">शून्य भ्रष्टाचार नीति:</span><span class="lang-hi"> यह सुनिश्चित करने की प्रतिबद्धता कि सरकारी धन बिना किसी देरी या कटौती के लाभार्थियों तक पहुंचे।</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Problem Submission Form -->
+        <section id="problems" class="py-16 bg-background">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-primary mb-8">
+                    <span class="lang-en">Tell Us Your Problem (Samasya) – WhatsApp 8619484174 / 8294478917</span>
+                    <span class="lang-hi">हमें अपनी समस्या (Samasya) बताएं – व्हाट्सएप 8619484174 / 8294478917</span>
+                </h2>
+                <div class="bg-white p-8 rounded-xl shadow-2xl">
+                    <div id="problem-form-status" class="db-status-failed">
+                        <span class="lang-en">Database connection is disabled in this version. Data submitted will NOT be saved.</span>
+                        <span class="lang-hi">इस संस्करण में डेटाबेस कनेक्शन अक्षम है। सबमिट किया गया डेटा सेव नहीं होगा।</span>
+                    </div>
+                    <form id="problem-form" onsubmit="handleProblemSubmit(event)">
+                        <div class="space-y-6">
+                            <div>
+                                <label for="problem-name" class="block text-sm font-medium text-gray-700 mb-1">
+                                    <span class="lang-en">Your Name</span><span class="lang-hi">आपका नाम</span>
+                                </label>
+                                <input type="text" id="problem-name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                            </div>
+                            <div>
+                                <label for="problem-village" class="block text-sm font-medium text-gray-700 mb-1">
+                                    <span class="lang-en">Your Village</span><span class="lang-hi">आपका गांव</span>
+                                </label>
+                                <select id="problem-village" name="village" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                    <option value="" disabled selected><span class="lang-en">Select Village </span><span class="lang-hi">गांव चुनें</span></option>
+                                    <option value="Chandoli"><span class="lang-en">Chandoli </span><span class="lang-hi">चांदोली</span></option>
+                                    <option value="Roja"><span class="lang-en">Roja </span><span class="lang-hi">रोजा</span></option>
+                                    <option value="Baas"><span class="lang-en">Baas </span><span class="lang-hi">घाटी नीचे का बास</span></option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="problem-description" class="block text-sm font-medium text-gray-700 mb-1">
+                                    <span class="lang-en">Describe the Problem (e.g., No water supply, Poor road)</span>
+                                    <span class="lang-hi">समस्या का वर्णन करें (उदाहरण: पानी की आपूर्ति नहीं, खराब सड़क)</span>
+                                </label>
+                                <textarea id="problem-description" name="description" rows="4" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3 px-4 bg-secondary text-white font-bold rounded-lg shadow-md hover:bg-primary transition duration-300 transform hover:scale-[1.01]">
+                                <span class="lang-en">Submit Problem</span><span class="lang-hi">समस्या सबमिट करें</span>
+                            </button>
+                        </div>
+                    </form>
+                    <div id="problem-message" class="mt-4 text-center hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campaign Updates & Real-time Problems / Video Gallery -->
+        <section id="updates" class="py-16 sm:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center text-primary mb-12">
+                    <span class="lang-en">Campaign Updates & Latest Samasya (Problems)</span>
+                    <span class="lang-hi">अभियान की ताज़ा ख़बरें और नवीनतम समस्याएँ</span>
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                    <!-- Real-Time Problems (Placeholder for non-live version) -->
+                    <div class="lg:col-span-1">
+                        <div class="bg-red-50 p-6 rounded-xl shadow-lg border-l-4 border-red-500">
+                            <h3 class="text-2xl font-bold text-red-700 mb-4">
+                                <span class="lang-en">Latest Village Problems Submitted</span>
+                                <span class="lang-hi">नवीनतम समस्याएँ (Samasya)</span>
+                            </h3>
+                             <p class="text-sm italic text-red-600 mb-4">
+                                <span class="lang-en">Note: This is a static placeholder. In the live version with Firebase, this list would show real-time problems submitted by villagers.</span>
+                                <span class="lang-hi">ध्यान दें: यह एक स्थिर प्लेसहोल्डर है। Firebase के साथ लाइव संस्करण में, यह सूची ग्रामीणों द्वारा सबमिट की गई वास्तविक समस्याओं को दिखाएगी।</span>
+                            </p>
+                            <div id="latest-problems" class="space-y-4 max-h-96 overflow-y-auto">
+                                <div class="p-3 bg-white rounded-lg shadow-sm border border-gray-200">
+                                    <p class="text-sm font-semibold text-gray-800">
+                                        <span class="lang-en">Problem:</span><span class="lang-hi">समस्या:</span> <span class="lang-en text-primary">Drainage blockage near Ghati Baas.</span><span class="lang-hi text-primary">घाटी घाटी नीचे का बास के पास नाले में रुकावट।</span>
+                                    </p>
+                                    <p class="text-xs text-gray-500 mt-1">
+                                        <span class="lang-en">Submitted by: Sarita D., Baas</span><span class="lang-hi">द्वारा सबमिट: सरिता डी., घाटी नीचे का बास</span>
+                                    </p>
+                                </div>
+                                
+                                <div class="p-3 bg-white rounded-lg shadow-sm border border-gray-200">
+                                    <p class="text-sm font-semibold text-gray-800">
+                                        <span class="lang-en">Problem:</span><span class="lang-hi">समस्या:</span> <span class="lang-en text-primary">Need better benches at Chandoli's Panchayat Bhawan.</span><span class="lang-hi text-primary">चांदोली के पंचायत भवन में बेहतर बेंचों की आवश्यकता है।</span>
+                                    </p>
+                                    <p class="text-xs text-gray-500 mt-1">
+                                        <span class="lang-en">Submitted by: Ramesh K., Chandoli</span><span class="lang-hi">द्वारा सबमिट: रमेश के., चांदोली</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Gallery & Campaign News -->
+                    <div class="lg:col-span-2">
+                        <h3 class="text-2xl font-bold text-secondary mb-4 border-b pb-2 border-primary">
+                            <span class="lang-en">Campaign Video Gallery (YouTube/Facebook Embeds)</span>
+                            <span class="lang-hi">अभियान वीडियो गैलरी (यूट्यूब/फेसबुक एम्बेड)</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- Video 1 Tanker -->
+                        <div class="rounded-xl overflow-hidden shadow-xl aspect-video">
+                             <a href="https://www.youtube.com/watch?v=wAxSEmQ4m2g" target="_blank" rel="noopener" class="relative block w-full h-full group">
+                                 <img src="https://img.youtube.com/vi/wAxSEmQ4m2g/sddefault.jpg" alt="Water Tanker Service" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                                 <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                     <svg class="w-16 h-16 text-white opacity-90 group-hover:opacity-100" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                                 </div>
+                             </a>
+                             <p class="text-center text-sm font-medium pt-2 text-gray-600">
+                                 <span class="lang-en">Free Water Tanker Service – Ground Action</span>
+                                 <span class="lang-hi">नि:शुल्क पानी टैंकर सेवा – जमीनी कार्य</span>
+                             </p>
+                         </div>
+                         <!-- Video 2 Interview -->
+                         <div class="rounded-xl overflow-hidden shadow-xl aspect-video">
+                             <a href="https://www.youtube.com/watch?v=5d4jJR_Fbzs" target="_blank" rel="noopener" class="relative block w-full h-full group">
+                                 <img src="https://img.youtube.com/vi/5d4jJR_Fbzs/sddefault.jpg" alt="Vision Interview" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+                                 <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                     <svg class="w-16 h-16 text-white opacity-90 group-hover:opacity-100" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                                 </div>
+                             </a>
+                             <p class="text-center text-sm font-medium pt-2 text-gray-600">
+                                 <span class="lang-en">Vision Interview with Rujdar Khan</span>
+                                 <span class="lang-hi">रुजदार खान का विज़न साक्षात्कार</span>
+                             </p>
+                         </div>
+                    </div>
+
+                    <!-- Image Carousel (now single slide) -->
+                    <div class="relative w-full max-w-4xl mx-auto">
+                        <div id="carousel-container" class="flex overflow-hidden rounded-xl shadow-2xl">
+                            <!-- Slides will be inserted here by JS -->
+                        </div>
+                        <!-- Navigation Buttons -->
+                        <button id="prev-btn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-secondary bg-opacity-70 text-white p-3 rounded-r-lg hover:bg-opacity-100 transition z-20 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                        </button>
+                        <button id="next-btn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-secondary bg-opacity-70 text-white p-3 rounded-l-lg hover:bg-opacity-100 transition z-20 focus:outline-none">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                        <!-- Indicators -->
+                        <div id="carousel-indicators" class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                            <!-- Indicators will be generated here by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Volunteer Form -->
+        <section id="volunteer" class="py-16 bg-primary text-white">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-extrabold text-center mb-8 text-secondary">
+                    <span class="lang-en">Join the Movement: Volunteer Now!</span>
+                    <span class="lang-hi">आंदोलन में शामिल हों: अभी स्वयंसेवक बनें!</span>
+                </h2>
+                <div class="bg-white text-gray-800 p-8 rounded-xl shadow-2xl">
+                    <div id="volunteer-form-status" class="db-status-failed">
+                        <span class="lang-en">Database connection is disabled in this version. Data submitted will NOT be saved.</span>
+                        <span class="lang-hi">इस संस्करण में डेटाबेस कनेक्शन अक्षम है। सबमिट किया गया डेटा सेव नहीं होगा।</span>
+                    </div>
+                    <form id="volunteer-form" onsubmit="handleVolunteerSubmit(event)">
+                        <div class="space-y-6">
+                            <div>
+                                <label for="volunteer-name" class="block text-sm font-medium text-gray-700 mb-1">
+                                    <span class="lang-en">Your Full Name</span><span class="lang-hi">आपका पूरा नाम</span>
+                                </label>
+                                <input type="text" id="volunteer-name" name="name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary">
+                            </div>
+                            <div>
+                                <label for="volunteer-phone" class="block text-sm font-medium text-gray-700 mb-1">
+                                    <span class="lang-en">Mobile Number</span><span class="lang-hi">मोबाइल नंबर</span>
+                                </label>
+                                <input type="tel" id="volunteer-phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary">
+                            </div>
+                            <div>
+                                <label for="volunteer-skill" class="block text-sm font-medium text-gray-700 mb-1">
+                                    <span class="lang-en">How can you help? (e.g., Door-to-door, Social Media, Bike Rally)</span>
+                                    <span class="lang-hi">आप कैसे मदद कर सकते हैं? (उदाहरण: घर-घर जाकर, सोशल मीडिया, बाइक रैली)</span>
+                                </label>
+                                <textarea id="volunteer-skill" name="skill" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-secondary focus:border-secondary"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3 px-4 bg-secondary text-white font-bold rounded-lg shadow-md hover:bg-tertiary transition duration-300 transform hover:scale-[1.01]">
+                                <span class="lang-en">Sign Up to Volunteer</span><span class="lang-hi">स्वयंसेवक के लिए साइन अप करें</span>
+                            </button>
+                        </div>
+                    </form>
+                    <div id="volunteer-message" class="mt-4 text-center hidden"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">
+                <span class="lang-en">Rujdar Khan for Bhavi Sarpanch, Gram Panchayat Chandoli (Villages: Chandoli, Roja, Baas)</span>
+                <span class="lang-hi">रुजदार खान भावी सरपंच के लिए, ग्राम पंचायत चांदोली (गाँव: चांदोली, रोजा, घाटी नीचे का बास)।</span>
+            </p>
+            <p class="text-xs mt-2 text-gray-400">
+                <span class="lang-en">**Vote for Honest, Transparent, and Smart Village Development**</span>
+                <span class="lang-hi">**ईमानदार, पारदर्शी और स्मार्ट ग्राम विकास के लिए वोट दें**</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Core Application JavaScript -->
+    <script>
+        // --- DATA AND UTILITY FUNCTIONS (Non-Firebase) ---
+
+        // WhatsApp Integration via CallMeBot (https://www.callmebot.com/)
+        // Replace YOUR_API_KEY_1 / 2 with keys obtained for each number
+        const WHATSAPP_CONFIG = [
+            { phone: "8619484174", apikey: "YOUR_API_KEY_1" },
+            // { phone: "8294478917", apikey: "YOUR_API_KEY_2" }
+        ];
+
+        const sendWhatsAppMessage = async (msg) => {
+            const promises = WHATSAPP_CONFIG.map(cfg => {
+                const url = `https://api.callmebot.com/whatsapp.php?phone=${cfg.phone}&text=${encodeURIComponent(msg)}&apikey=${cfg.apikey}`;
+                return fetch(url).catch(err => console.error("WhatsApp send error", err));
+            });
+            await Promise.all(promises);
+        };
+
+        // 1. Language Toggle Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const langToggleBtn = document.getElementById('lang-toggle');
+            
+            // Set initial language state
+            let currentLang = body.getAttribute('data-lang') || 'en';
+
+            const updateToggleText = (lang) => {
+                const enText = "Switch to हिंदी";
+                const hiText = "Switch to English";
+                langToggleBtn.innerHTML = lang === 'en' ? `<span data-lang="en">${enText}</span>` : `<span data-lang="hi">${hiText}</span>`;
+            };
+            
+            // Initial button text load
+            updateToggleText(currentLang);
+
+            // Function to handle the actual language switch
+            const toggleLanguage = () => {
+                currentLang = currentLang === 'en' ? 'hi' : 'en';
+                body.setAttribute('data-lang', currentLang);
+                updateToggleText(currentLang);
+            };
+
+            // Event listener for the button
+            langToggleBtn.addEventListener('click', toggleLanguage);
+
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // 2. Carousel Logic
+            const carouselContainer = document.getElementById('carousel-container');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const indicatorsContainer = document.getElementById('carousel-indicators');
+
+            const slidesData = [
+                { url: 'https://img.youtube.com/vi/wAxSEmQ4m2g/hqdefault.jpg', link: 'https://www.youtube.com/watch?v=wAxSEmQ4m2g', captionEn: "Free Water Tanker Service for Villagers", captionHi: "ग्रामवासियों के लिए नि:शुल्क पानी टैंकर सेवा" },
+            ];
+
+            let currentIndex = 0;
+
+            const createSlidesAndIndicators = () => {
+                carouselContainer.innerHTML = '';
+                indicatorsContainer.innerHTML = '';
+                slidesData.forEach((slide, index) => {
+                    const slideElement = document.createElement('div');
+                    slideElement.className = 'carousel-slide relative';
+                    slideElement.style.backgroundImage = `url('${slide.url}')`;
+                    slideElement.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    slideElement.classList.add('cursor-pointer');
+                    slideElement.addEventListener('click', () => {
+                        window.open(slide.link, '_blank');
+                    });
+
+                    // Caption Overlay
+                    const caption = document.createElement('div');
+                    caption.className = 'absolute bottom-0 left-0 right-0 bg-gray-900 bg-opacity-60 p-4 text-center';
+                    caption.innerHTML = `<p class="text-sm font-semibold text-white">
+                        <span class="lang-en">${slide.captionEn}</span>
+                        <span class="lang-hi">${slide.captionHi}</span>
+                    </p>`;
+                    slideElement.appendChild(caption);
+                    carouselContainer.appendChild(slideElement);
+
+                    // Indicator
+                    const indicator = document.createElement('button');
+                    indicator.className = `w-3 h-3 rounded-full mx-1 focus:outline-none transition duration-300 ${index === currentIndex ? 'bg-white' : 'bg-gray-400'}`;
+                    indicator.addEventListener('click', () => moveToSlide(index));
+                    indicatorsContainer.appendChild(indicator);
+                });
+            };
+
+            const updateCarousel = () => {
+                const slides = document.querySelectorAll('.carousel-slide');
+                const indicators = document.querySelectorAll('#carousel-indicators button');
+
+                slides.forEach((slide, index) => {
+                    slide.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    // Update language visibility based on body state (ensures captions switch)
+                    slide.querySelector('.lang-en').style.display = body.getAttribute('data-lang') === 'en' ? 'initial' : 'none';
+                    slide.querySelector('.lang-hi').style.display = body.getAttribute('data-lang') === 'hi' ? 'initial' : 'none';
+                });
+                indicators.forEach((indicator, index) => {
+                    indicator.className = `w-3 h-3 rounded-full mx-1 focus:outline-none transition duration-300 ${index === currentIndex ? 'bg-white' : 'bg-gray-400 bg-opacity-50'}`;
+                });
+            };
+
+            const moveToSlide = (index) => {
+                currentIndex = index;
+                updateCarousel();
+            };
+
+            const nextSlide = () => {
+                currentIndex = (currentIndex + 1) % slidesData.length;
+                updateCarousel();
+            };
+
+            const prevSlide = () => {
+                currentIndex = (currentIndex - 1 + slidesData.length) % slidesData.length;
+                updateCarousel();
+            };
+
+            nextBtn.addEventListener('click', prevSlide); // Fixed: Should be nextSlide
+            prevBtn.addEventListener('click', prevSlide); // Fixed: Was prevSlide
+
+            // Corrected event listeners (they were previously mixed up)
+            nextBtn.removeEventListener('click', prevSlide); 
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.removeEventListener('click', prevSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+
+            // Auto-cycle the carousel
+            setInterval(nextSlide, 5000); 
+            
+            createSlidesAndIndicators(); // Initial creation
+
+            // Re-run updateCarousel when language changes to force caption refresh
+            langToggleBtn.addEventListener('click', () => {
+                // Wait briefly for the body data-lang attribute to update
+                setTimeout(updateCarousel, 50); 
+            });
+            
+            // 3. Placeholder Form Submission Handlers
+            
+            const showFormMessage = (elementId, success, messageEn, messageHi) => {
+                const messageElement = document.getElementById(elementId);
+                const isEnglish = body.getAttribute('data-lang') === 'en';
+                const message = isEnglish ? messageEn : messageHi;
+                
+                messageElement.textContent = message;
+                messageElement.classList.remove('hidden');
+                messageElement.classList.remove('text-green-600', 'text-red-600');
+                
+                // Use a dynamic color based on success
+                const messageColor = success ? 'text-tertiary' : 'text-red-600';
+                messageElement.classList.add(messageColor);
+
+                setTimeout(() => {
+                    messageElement.classList.add('hidden');
+                }, 4000);
+            }
+
+            window.handleProblemSubmit = (event) => {
+                event.preventDefault();
+                const form = event.target;
+                const name = form.elements['name'].value;
+                const village = form.elements['village'].value;
+                
+                console.log(`[Placeholder Submit] Problem from ${name} in ${village}. Data not saved (Firebase disabled).`);
+
+                showFormMessage('problem-message', true, 
+                    'Thank you! Your problem has been received by the campaign team (Placeholder).', 
+                    'धन्यवाद! आपकी समस्या अभियान टीम को मिल गई है (प्लेसहोल्डर)।'
+                );
+                form.reset();
+            };
+
+            window.handleVolunteerSubmit = (event) => {
+                event.preventDefault();
+                const form = event.target;
+                const name = form.elements['name'].value;
+                
+                console.log(`[Placeholder Submit] Volunteer signed up: ${name}. Data not saved (Firebase disabled).`);
+
+                showFormMessage('volunteer-message', true, 
+                    'Thank you! The campaign team will contact you shortly to volunteer (Placeholder).', 
+                    'धन्यवाद! अभियान टीम स्वयंसेवा के लिए जल्द ही आपसे संपर्क करेगी (प्लेसहोल्डर)।'
+                );
+                form.reset();
+            };
+
+            // Initial load check for carousel visibility
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>
