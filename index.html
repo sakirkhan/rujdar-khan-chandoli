@@ -1,13 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rujdar Khan: Gram Panchayat Chandoli</title>
-    <!-- Site Favicon -->
-    <link rel="icon" href="https://placehold.co/64x64/FF8C00/FFFFFF?text=RK" type="image/png">
-    <!-- AOS Animation CSS -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -17,12 +13,11 @@
             theme: {
                 extend: {
                     colors: {
-                        // Refined Palette: Midnight Navy, Vibrant Saffron, Emerald Green, Accent Gold
-                        'primary': '#0D1726', // Midnight Navy
-                        'secondary': '#FF9100', // Vibrant Saffron
-                        'tertiary': '#23A455', // Emerald Green (Growth)
-                        'accent': '#FFC107', // Accent Gold (Highlights)
-                        'background': '#FAFAFA', // Soft off-white for clean sections
+                        // NEW Palette: Deep Navy, Bright Saffron, Green Accent
+                        'primary': '#192841', // Deep Navy Blue (Authority, Trust)
+                        'secondary': '#FF8C00', // Bright Saffron/Dark Gold (Action, Visibility)
+                        'tertiary': '#4CAF50', // Bright Green (Growth, Vikas Accent)
+                        'background': '#F7F7F7', // Very light gray for optimal contrast
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -38,32 +33,10 @@
         ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #999; }
         .hero-bg {
-            /* Smart Village Theme: Vibrant & Modern Rural Tech */
-            background-image: linear-gradient(to bottom, rgba(13, 23, 38, 0.85) 0%, rgba(13, 23, 38, 0.75) 50%, rgba(255, 145, 0, 0.4) 100%), url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1600&q=80');
+            /* Updated Placeholder for a realistic village/development image */
+            background-image: linear-gradient(to right, rgba(13, 27, 42, 0.8), rgba(255, 183, 3, 0.6)), url('https://images.unsplash.com/photo-1608889177034-4e48c233c6dc?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            position: relative;
-        }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(13, 23, 38, 0.3) 0%, transparent 50%, rgba(35, 164, 85, 0.2) 100%);
-            pointer-events: none;
-        }
-        /* Fix text wrapping issues */
-        .hero-bg h1, .hero-bg p {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-            line-height: 1.3;
-        }
-        .hero-bg h1 {
-            white-space: normal;
         }
         /* Style for the carousel slides */
         .carousel-slide {
@@ -98,20 +71,7 @@
             border: 1px solid #fca5a5;
             font-weight: bold;
         }
-        .gradient-text {
-            background: linear-gradient(90deg, #FF9100 0%, #FFC107 40%, #23A455 80%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        /* Pulsing CTA button */
-        .pulse-btn{
-            animation:pulse 2.5s infinite;
-        }
-        @keyframes pulse{
-            0%{box-shadow:0 0 0 0 rgba(255,145,0,0.7);} 
-            70%{box-shadow:0 0 0 18px rgba(255,145,0,0);} 
-            100%{box-shadow:0 0 0 0 rgba(255,145,0,0);} 
-        }
+
     </style>
 </head>
 <body class="bg-background font-sans text-gray-800" data-lang="hi">
@@ -150,7 +110,9 @@
                     <a href="#updates" class="text-base font-medium text-gray-500 hover:text-secondary transition duration-300">
                         <span class="lang-en">Updates</span><span class="lang-hi">ताज़ा ख़बरें</span>
                     </a>
-                  
+                    <a href="#volunteer" class="text-base font-medium text-white bg-secondary py-2 px-4 rounded-full shadow-lg hover:bg-primary transition duration-300">
+                        <span class="lang-en">Volunteer</span><span class="lang-hi">स्वयंसेवक बनें</span>
+                    </a>
                 </nav>
                 <div class="md:hidden">
                     <!-- Mobile Menu Button -->
@@ -180,7 +142,6 @@
                 <a href="#updates" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
                     <span class="lang-en">Updates</span><span class="lang-hi">ताज़ा ख़बरें</span>
                 </a>
-               
             </div>
         </div>
     </header>
@@ -189,34 +150,51 @@
         <!-- Hero Section -->
         <section class="hero-bg py-24 sm:py-32 text-white text-center relative">
             <div class="max-w-4xl mx-auto px-4">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 gradient-text break-words leading-tight" data-aos="zoom-in">
-                    <span class="lang-en block">Rujdar Khan: <span class="block sm:inline">Gram Panchayat Chandoli</span></span>
-                    <span class="lang-hi block">रुजदार खान: <span class="block sm:inline">ग्राम पंचायत चांदोली</span></span>
+                <h1 class="text-5xl sm:text-6xl font-extrabold tracking-tight mb-4">
+                    <span class="block text-primary bg-white bg-opacity-90 rounded-xl p-2 mt-2 shadow-xl">
+                        <span class="lang-en">Rujdar Khan: Gram Panchayat Chandoli</span>
+                        <span class="lang-hi">रुजदार खान: ग्राम पंचायत चांदोली</span>
+                    </span>
                 </h1>
-                <p class="text-lg sm:text-xl md:text-2xl mt-4 font-light max-w-2xl mx-auto break-words leading-relaxed px-2">
+                <p class="text-xl sm:text-2xl mt-4 font-light max-w-2xl mx-auto">
                     <span class="lang-en">Fighting the election on **Ground Issues** (Safai, Pani, Sadak). Your voice, our priority across **Chandoli, Roja, and Baas.**</span>
                     <span class="lang-hi">जमीनी **मुद्दों** (सफाई, पानी, सड़क) पर चुनाव लड़ रहे हैं। **चांदोली, रोजा और घाटी नीचे का बास** तीनों गांवों में आपकी आवाज़, हमारी प्राथमिकता।</span>
                 </p>
-                <div class="mt-8 flex justify-center space-x-4">
-                    <a href="#problems" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-xl text-white bg-secondary hover:bg-tertiary transition duration-300 transform hover:scale-105 pulse-btn" data-aos="zoom-in">
+                <div class="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-4">
+                    <a href="#problems" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-xl text-white bg-secondary hover:bg-primary transition duration-300 transform hover:scale-105">
                         <span class="lang-en">Tell Us Your Samasya (Problem)</span>
                         <span class="lang-hi">अपनी समस्या (Samasya) बताएं</span>
+                    </a>
+                    <a href="tel:9549337718" class="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-base font-medium rounded-full shadow-xl text-white hover:bg-white hover:text-primary transition duration-300 transform hover:scale-105">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        <span class="lang-en">Call: 9549337718</span>
+                        <span class="lang-hi">कॉल: 9549337718</span>
                     </a>
                 </div>
             </div>
         </section>
-        <!-- SVG Wave Divider -->
-        <div class="relative overflow-hidden leading-none" style="height:60px;margin-top:-1px"><svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="absolute block w-full h-full"><path d="M0,0V46.29c47.35,22,98,29.19,148.88,17,48.5-11.59,95.61-37.65,148.24-41.44,59-4.39,112.36,19.27,166,35.7,59.22,18.35,117.3,22.87,177.38,8.41,31.79-7.57,60.05-19.5,92-26.32,52.21-11.41,104.79-6.14,157.1,5.12,54.94,11.79,109.52,30.28,167,28.35,30.22-1.08,59.09-7.33,88.41-13.77,39.22-8.58,76.62-20.23,117.31-26.66V0Z" fill="#FAFAFA"></path></svg></div>
 
         <!-- Candidate Photo & Intro -->
         <section class="bg-background py-12 -mt-16 md:-mt-20 relative z-10">
             <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <img class="w-32 h-32 md:w-44 md:h-44 rounded-full mx-auto shadow-xl ring-4 ring-accent ring-offset-4 object-cover transition transform hover:scale-105" 
-                     src="https://placehold.co/160x160/192841/FFFFFF?text=Rujdar+Khan" 
-                     alt="Rujdar Khan, Candidate for Sarpanch">
+                <img class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto shadow-xl ring-4 ring-secondary ring-offset-4 object-cover" 
+                     src="images/rujdar-khan.jpeg" 
+                     alt="Rujdar Khan, Candidate for Sarpanch"
+                     onerror="this.onerror=null; this.src='images/rujdar-khan.jpeg'; this.onerror=function(){this.src='images/rujdar-khan.png'; this.onerror=function(){this.style.display='none';}}">
                 <h2 class="text-3xl font-extrabold text-primary mt-4">
                     <span class="lang-en">Meet Rujdar Khan, Your Bhavi Sarpanch</span><span class="lang-hi">मिलिए रुजदार खान से, आपके भावी सरपंच</span>
                 </h2>
+                <div class="mt-3 mb-3">
+                    <a href="tel:9549337718" class="inline-flex items-center justify-center px-4 py-2 bg-secondary text-white rounded-full text-lg font-semibold hover:bg-primary transition duration-300 shadow-md">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                        <span class="lang-en">Call: 9549337718</span>
+                        <span class="lang-hi">कॉल: 9549337718</span>
+                    </a>
+                </div>
                 <p class="mt-3 text-lg text-gray-600">
                     <span class="lang-en">"I am not here for a post, I am here to serve the community. Let's make Chandoli, Roja, and Baas the first **Truly Smart and Accountable Gram Panchayat** in the region."</span>
                     <span class="lang-hi">"मैं पद के लिए नहीं, बल्कि ग्रामवासियो की सेवा के लिए यहां हूं। आइए, चांदोली, रोजा और घाटी नीचे का बास को क्षेत्र की पहली **वास्तव में स्मार्ट और जवाबदेह ग्राम पंचायत** बनाएं।"</span>
@@ -243,7 +221,7 @@
         </section>
 
         <!-- Photo Gallery / Carousel Section -->
-        <section id="gallery" class="py-16 sm:py-24 text-white" style="background-image:linear-gradient(to bottom, rgba(13,23,38,0.9), rgba(13,23,38,0.7)),url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=80'); background-size:cover; background-position:center;" data-aos="fade-up">
+        <section id="gallery" class="py-16 sm:py-24 bg-primary text-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center mb-10 text-secondary">
                     <span class="lang-en">Campaign Moments & Village Vision Gallery</span>
@@ -269,9 +247,9 @@
         </section>
 
         <!-- Core Issues Section (The Agenda) -->
-        <section id="issues" class="py-16 sm:py-24 bg-background" data-aos="fade-up">
+        <section id="issues" class="py-16 sm:py-24 bg-background">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-4xl font-extrabold text-center text-primary mb-12 gradient-text" data-aos="zoom-in">
+                <h2 class="text-4xl font-extrabold text-center text-primary mb-12">
                     <span class="lang-en">Our 6-Point Chandoli Agenda (For Roja, Baas & Chandoli)</span>
                     <span class="lang-hi">हमारा 6-सूत्रीय चांदोली एजेंडा (रोजा, घाटी नीचे का बास और चांदोली के लिए)</span>
                 </h2>
@@ -389,11 +367,11 @@
 
 
         <!-- Problem Submission Form -->
-        <section id="problems" class="py-16 bg-background" data-aos="fade-up">
+        <section id="problems" class="py-16 bg-background">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center text-primary mb-8">
-                    <span class="lang-en">Tell Us Your Problem (Samasya) – WhatsApp 9549337718 / 8058457950</span>
-                    <span class="lang-hi">हमें अपनी समस्या (Samasya) बताएं – व्हाट्सएप 8619484174 / 8058457950</span>
+                    <span class="lang-en">Tell Us Your Problem (Samasya) – WhatsApp 8058591872 / 8058457950</span>
+                    <span class="lang-hi">हमें अपनी समस्या (Samasya) बताएं – व्हाट्सएप 8058591872 / 8058457950</span>
                 </h2>
                 <div class="bg-white p-8 rounded-xl shadow-2xl">
             
@@ -434,7 +412,7 @@
         </section>
 
         <!-- Campaign Updates & Real-time Problems / Video Gallery -->
-        <section id="updates" class="py-16 sm:py-24 bg-white" data-aos="fade-up">
+        <section id="updates" class="py-16 sm:py-24 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center text-primary mb-12">
                     <span class="lang-en">Campaign Updates & Latest Samasya (Problems)</span>
@@ -480,38 +458,38 @@
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                         <!-- Video 1 Tanker -->
-                        <div class="rounded-xl overflow-hidden shadow-xl aspect-video">
+                            <div class="rounded-xl overflow-hidden shadow-xl aspect-video">
                              <a href="https://www.youtube.com/watch?v=wAxSEmQ4m2g" target="_blank" rel="noopener" class="relative block w-full h-full group">
                                  <img src="https://img.youtube.com/vi/wAxSEmQ4m2g/sddefault.jpg" alt="Water Tanker Service" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                                  <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
                                      <svg class="w-16 h-16 text-white opacity-90 group-hover:opacity-100" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                                  </div>
                              </a>
-                             <p class="text-center text-sm font-medium pt-2 text-gray-600">
+                                <p class="text-center text-sm font-medium pt-2 text-gray-600">
                                  <span class="lang-en">Free Water Tanker Service – Ground Action</span>
                                  <span class="lang-hi">नि:शुल्क पानी टैंकर सेवा – जमीनी कार्य</span>
-                             </p>
-                         </div>
+                                </p>
+                            </div>
                          <!-- Video 2 Interview -->
-                         <div class="rounded-xl overflow-hidden shadow-xl aspect-video">
+                            <div class="rounded-xl overflow-hidden shadow-xl aspect-video">
                              <a href="https://www.youtube.com/watch?v=5d4jJR_Fbzs" target="_blank" rel="noopener" class="relative block w-full h-full group">
                                  <img src="https://img.youtube.com/vi/5d4jJR_Fbzs/sddefault.jpg" alt="Vision Interview" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
                                  <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
                                      <svg class="w-16 h-16 text-white opacity-90 group-hover:opacity-100" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
                                  </div>
                              </a>
-                             <p class="text-center text-sm font-medium pt-2 text-gray-600">
+                                <p class="text-center text-sm font-medium pt-2 text-gray-600">
                                  <span class="lang-en">Vision Interview with Rujdar Khan</span>
                                  <span class="lang-hi">रुजदार खान का विज़न साक्षात्कार</span>
-                             </p>
-                         </div>
-                    </div>
+                                </p>
+                            </div>
+                        </div>
 
                     <!-- Image Carousel (now single slide) -->
                     <div class="relative w-full max-w-4xl mx-auto">
                         <div id="carousel-container" class="flex overflow-hidden rounded-xl shadow-2xl">
                             <!-- Slides will be inserted here by JS -->
-                        </div>
+                            </div>
                         <!-- Navigation Buttons -->
                         <button id="prev-btn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-secondary bg-opacity-70 text-white p-3 rounded-r-lg hover:bg-opacity-100 transition z-20 focus:outline-none">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -537,6 +515,15 @@
                 <span class="lang-en">Rujdar Khan for Bhavi Sarpanch, Gram Panchayat Chandoli (Villages: Chandoli, Roja, Baas)</span>
                 <span class="lang-hi">रुजदार खान भावी सरपंच के लिए, ग्राम पंचायत चांदोली (गाँव: चांदोली, रोजा, घाटी नीचे का बास)।</span>
             </p>
+            <div class="mt-4">
+                <a href="tel:9549337718" class="inline-flex items-center text-white hover:text-secondary transition duration-300 text-base font-semibold">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    <span class="lang-en">Contact Rujdar Khan: 9549337718</span>
+                    <span class="lang-hi">रुजदार खान से संपर्क करें: 9549337718</span>
+                </a>
+            </div>
             <p class="text-xs mt-2 text-gray-400">
                 <span class="lang-en">**Vote for Honest, Transparent, and Smart Village Development**</span>
                 <span class="lang-hi">**ईमानदार, पारदर्शी और स्मार्ट ग्राम विकास के लिए वोट दें**</span>
@@ -715,16 +702,45 @@
             window.handleProblemSubmit = (event) => {
                 event.preventDefault();
                 const form = event.target;
-                const name = form.elements['name'].value;
-                const village = form.elements['village'].value;
+                const name = form.elements['name'].value.trim();
+                const village = form.elements['village'].value.trim();
+                const description = form.elements['description'].value.trim();
                 
-                console.log(`[Placeholder Submit] Problem from ${name} in ${village}. Data not saved (Firebase disabled).`);
+                // Validate village selection
+                if (!village) {
+                    showFormMessage('problem-message', false, 
+                        'Please select your village.', 
+                        'कृपया अपने गांव का चयन करें।'
+                    );
+                    form.elements['village'].focus();
+                    return;
+                }
 
+                // WhatsApp number in E.164 format (remove leading + if present, add country code)
+                const TO_NUMBER = '918619484174'; // India country code + number
+                
+                // Build the message text in bilingual format
+                const isEnglish = body.getAttribute('data-lang') === 'en';
+                const messageText = isEnglish 
+                    ? `*Website Problem Submission / वेबसाइट समस्या सबमिट:*\n\n*Name / नाम:* ${name || '(Not provided / नहीं दिया गया)'}\n*Village / गाँव:* ${village}\n\n*Problem Description / समस्या का वर्णन:*\n${description || '(No description provided / कोई वर्णन नहीं दिया गया)'}`
+                    : `*वेबसाइट समस्या सबमिट / Website Problem Submission:*\n\n*नाम / Name:* ${name || '(नहीं दिया गया / Not provided)'}\n*गाँव / Village:* ${village}\n\n*समस्या का वर्णन / Problem Description:*\n${description || '(कोई वर्णन नहीं दिया गया / No description provided)'}`;
+
+                // Create WhatsApp click-to-chat URL
+                const whatsappUrl = `https://wa.me/${TO_NUMBER}?text=${encodeURIComponent(messageText)}`;
+                
+                // Open WhatsApp in new tab/window
+                window.open(whatsappUrl, '_blank');
+
+                // Show success message
                 showFormMessage('problem-message', true, 
-                    'Thank you! Your problem has been received by the campaign team (Placeholder).', 
-                    'धन्यवाद! आपकी समस्या अभियान टीम को मिल गई है (प्लेसहोल्डर)।'
+                    'Opening WhatsApp... Please send the message to submit your problem.', 
+                    'व्हाट्सएप खोला जा रहा है... कृपया अपनी समस्या सबमिट करने के लिए संदेश भेजें।'
                 );
+                
+                // Reset form after a short delay
+                setTimeout(() => {
                 form.reset();
+                }, 1000);
             };
 
             window.handleVolunteerSubmit = (event) => {
@@ -745,8 +761,5 @@
             updateCarousel();
         });
     </script>
-    <!-- AOS Animation JS -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init({ once: true, duration: 800, offset: 120 });</script>
 </body>
 </html>
