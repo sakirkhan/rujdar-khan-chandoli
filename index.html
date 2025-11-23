@@ -110,9 +110,6 @@
                     <a href="#updates" class="text-base font-medium text-gray-500 hover:text-secondary transition duration-300">
                         <span class="lang-en">Updates</span><span class="lang-hi">ताज़ा ख़बरें</span>
                     </a>
-                    <a href="#volunteer" class="text-base font-medium text-white bg-secondary py-2 px-4 rounded-full shadow-lg hover:bg-primary transition duration-300">
-                        <span class="lang-en">Volunteer</span><span class="lang-hi">स्वयंसेवक बनें</span>
-                    </a>
                 </nav>
                 <div class="md:hidden">
                     <!-- Mobile Menu Button -->
@@ -179,9 +176,10 @@
         <!-- Candidate Photo & Intro -->
         <section class="bg-background py-12 -mt-16 md:-mt-20 relative z-10">
             <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <img class="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto shadow-xl ring-4 ring-secondary ring-offset-4 object-cover" 
+                <img class="w-40 h-40 md:w-48 md:h-48 rounded-full mx-auto shadow-xl ring-4 ring-secondary ring-offset-4 object-cover object-top" 
                      src="images/rujdar-khan.jpeg" 
                      alt="Rujdar Khan, Candidate for Sarpanch"
+                     style="object-position: center top;"
                      onerror="this.onerror=null; this.src='images/rujdar-khan.jpeg'; this.onerror=function(){this.src='images/rujdar-khan.png'; this.onerror=function(){this.style.display='none';}}">
                 <h2 class="text-3xl font-extrabold text-primary mt-4">
                     <span class="lang-en">Meet Rujdar Khan, Your Bhavi Sarpanch</span><span class="lang-hi">मिलिए रुजदार खान से, आपके भावी सरपंच</span>
@@ -370,8 +368,8 @@
         <section id="problems" class="py-16 bg-background">
             <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
                 <h2 class="text-4xl font-extrabold text-center text-primary mb-8">
-                    <span class="lang-en">Tell Us Your Problem (Samasya) – WhatsApp 8058591872 / 8058457950</span>
-                    <span class="lang-hi">हमें अपनी समस्या (Samasya) बताएं – व्हाट्सएप 8058591872 / 8058457950</span>
+                    <span class="lang-en">Tell Us Your Problem (Samasya) – 8058591872 / 8058457950</span>
+                    <span class="lang-hi">हमें अपनी समस्या (Samasya) बताएं – 8058591872 / 8058457950</span>
                 </h2>
                 <div class="bg-white p-8 rounded-xl shadow-2xl">
             
@@ -699,7 +697,7 @@
                 }, 4000);
             }
 
-            window.handleProblemSubmit = (event) => {
+            window.handleProblemSubmit = async (event) => {
                 event.preventDefault();
                 const form = event.target;
                 const name = form.elements['name'].value.trim();
@@ -716,47 +714,66 @@
                     return;
                 }
 
-                // WhatsApp number in E.164 format (remove leading + if present, add country code)
-                const TO_NUMBER = '918619484174'; // India country code + number
-                
-                // Build the message text in bilingual format
-                const isEnglish = body.getAttribute('data-lang') === 'en';
-                const messageText = isEnglish 
-                    ? `*Website Problem Submission / वेबसाइट समस्या सबमिट:*\n\n*Name / नाम:* ${name || '(Not provided / नहीं दिया गया)'}\n*Village / गाँव:* ${village}\n\n*Problem Description / समस्या का वर्णन:*\n${description || '(No description provided / कोई वर्णन नहीं दिया गया)'}`
-                    : `*वेबसाइट समस्या सबमिट / Website Problem Submission:*\n\n*नाम / Name:* ${name || '(नहीं दिया गया / Not provided)'}\n*गाँव / Village:* ${village}\n\n*समस्या का वर्णन / Problem Description:*\n${description || '(कोई वर्णन नहीं दिया गया / No description provided)'}`;
-
-                // Create WhatsApp click-to-chat URL
-                const whatsappUrl = `https://wa.me/${TO_NUMBER}?text=${encodeURIComponent(messageText)}`;
-                
-                // Open WhatsApp in new tab/window
-                window.open(whatsappUrl, '_blank');
-
-                // Show success message
+                // Show loading message
                 showFormMessage('problem-message', true, 
-                    'Opening WhatsApp... Please send the message to submit your problem.', 
-                    'व्हाट्सएप खोला जा रहा है... कृपया अपनी समस्या सबमिट करने के लिए संदेश भेजें।'
+                    'Submitting your problem...', 
+                    'आपकी समस्या सबमिट की जा रही है...'
                 );
+
+                // Google Apps Script Web App URL
+                // This URL connects your form to Google Sheets
+                const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx8Pv2y-qN_k9W_Ykk3BawcQchHrHJzE-_te5UkGDA6Y6wqNaBBSAVSonCVx1qsTua0/exec';
+
                 
-                // Reset form after a short delay
-                setTimeout(() => {
-                form.reset();
-                }, 1000);
-            };
-
-            window.handleVolunteerSubmit = (event) => {
-                event.preventDefault();
-                const form = event.target;
-                const name = form.elements['name'].value;
                 
-                console.log(`[Placeholder Submit] Volunteer signed up: ${name}. Data not saved (Firebase disabled).`);
+                // Check if URL is configured
+                if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL_HERE') {
+                    showFormMessage('problem-message', false, 
+                        'Google Sheets integration not configured. Please contact the administrator.', 
+                        'Google Sheets एकीकरण कॉन्फ़िगर नहीं किया गया है। कृपया व्यवस्थापक से संपर्क करें।'
+                    );
+                    console.error('⚠️ Google Script URL not configured. Please set GOOGLE_SCRIPT_URL in the code.');
+                    return;
+                }
+                
+                // Prepare form data
+                const formData = {
+                    name: name || 'Not provided',
+                    village: village,
+                    description: description || 'No description provided',
+                    timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+                };
 
-                showFormMessage('volunteer-message', true, 
-                    'Thank you! The campaign team will contact you shortly to volunteer (Placeholder).', 
-                    'धन्यवाद! अभियान टीम स्वयंसेवा के लिए जल्द ही आपसे संपर्क करेगी (प्लेसहोल्डर)।'
-                );
-                form.reset();
+                // Send data to Google Sheets via Apps Script
+                try {
+                    const response = await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Required for Google Apps Script
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    // Note: With no-cors mode, we can't read the response, but the data should be saved
+                    
+                    // Show success message
+                    showFormMessage('problem-message', true, 
+                        'Thank you! Your problem has been submitted successfully. We will contact you soon.', 
+                        'धन्यवाद! आपकी समस्या सफलतापूर्वक सबमिट हो गई है। हम जल्द ही आपसे संपर्क करेंगे।'
+                    );
+                    
+                    // Reset form
+                    form.reset();
+                    
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    showFormMessage('problem-message', false, 
+                        'Sorry, there was an error submitting your problem. Please try again or contact us directly at 9549337718.', 
+                        'क्षमा करें, आपकी समस्या सबमिट करने में कोई त्रुटि हुई। कृपया पुनः प्रयास करें या हमसे सीधे 9549337718 पर संपर्क करें।'
+                    );
+                }
             };
-
             // Initial load check for carousel visibility
             updateCarousel();
         });
